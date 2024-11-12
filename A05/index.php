@@ -13,7 +13,6 @@ $result = executeQuery($query);
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>User Information</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
     body {
       background-color: #FFFDB5;
@@ -87,9 +86,9 @@ $result = executeQuery($query);
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card text-start">
             <h4 class="card-title text-center mb-3">User Information</h4>
-            <h5 class="firstName"><i class="fas fa-user"></i> First Name: <?php echo htmlspecialchars($user['firstName']); ?></h5>
-            <h5 class="lastName"><i class="fas fa-user-tag"></i> Last Name: <?php echo htmlspecialchars($user['lastName']); ?></h5>
-            <h5 class="birthDate"><i class="fas fa-calendar-alt"></i> Birth Date: <?php echo htmlspecialchars($user['birthDate']); ?></h5>
+            <h5 class="firstName">First Name: <?php echo $user['firstName']; ?></h5>
+            <h5 class="lastName">Last Name: <?php echo $user['lastName']; ?></h5>
+            <h5 class="birthDate">Birth Date: <?php echo $user['birthDate']; ?></h5>
           </div>
         </div>
       <?php
@@ -102,8 +101,8 @@ $result = executeQuery($query);
   </div>
 
   <div class="footer">
-    <p>&copy; <?php echo date("Y"); ?> Jalem Louise Grapani. All rights reserved.</p>
-</div>
+    <p>&copy; 2024 Jalem Louise Grapani. All rights reserved.</p>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
