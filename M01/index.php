@@ -1,18 +1,15 @@
 <?php
 include("connect.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['submit'])) { 
   $firstName = $_POST['firstName'];
   $lastName = $_POST['lastName'];
   $birthDate = $_POST['birthDate'];
   
-  
   $addData = "INSERT INTO userinfo (firstName, lastName, birthDate) VALUES ('$firstName', '$lastName', '$birthDate')";
   
   if (mysqli_query($conn, $addData)) {
-    
     header("Location: index.php");
-    exit();
   } else {
     echo "<p class='text-center text-danger'>Error: " . mysqli_error($conn) . "</p>";
   }
@@ -29,7 +26,6 @@ $result = mysqli_query($conn, $query);
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>User Information</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
     body {
       background-color: #FFFDB5;
@@ -70,11 +66,6 @@ $result = mysqli_query($conn, $query);
       align-items: center;
     }
 
-    .card h5 i {
-      margin-right: 10px;
-      color: #007BFF;
-    }
-
     .footer {
       text-align: center;
       margin-top: 30px;
@@ -94,20 +85,20 @@ $result = mysqli_query($conn, $query);
   </div>
   <h3 class="text-center mb-2" style="font-weight: bold;">Add New User</h3>
   <div class="container mb-5 d-flex justify-content-center" style="background-color: #ABBA7C; width: 400px; padding: 30px; border-radius: 10px;">
-  <form action="" method="POST" class="w-100">
+  <form method="POST" class="w-100">
     <div class="mb-3">
-      <label for="firstName" class="form-label">First Name</label>
-      <input type="text" placeholder="First Name" class="form-control" id="firstName" name="firstName" required>
+      <label class="form-label">First Name</label>
+      <input type="text" placeholder="First Name" class="form-control" name="firstName" required>
     </div>
     <div class="mb-3">
-      <label for="lastName" class="form-label">Last Name</label>
-      <input type="text" placeholder="Last Name" class="form-control" id="lastName" name="lastName" required>
+      <label class="form-label">Last Name</label>
+      <input type="text" placeholder="Last Name" class="form-control" name="lastName" required>
     </div>
     <div class="mb-3">
-      <label for="birthDate" class="form-label">Birth Date</label>
-      <input type="date" placeholder="Birth Date" class="form-control" id="birthDate" name="birthDate" required>
+      <label class="form-label">Birth Date</label>
+      <input type="date" placeholder="Birth Date" class="form-control" name="birthDate" required>
     </div>
-    <button type="submit" class="btn btn-primary">Add User</button>
+    <button type="submit" name="submit" class="btn btn-primary">Add User</button>  <!-- Change here -->
   </form>
 </div>
 
@@ -120,9 +111,9 @@ $result = mysqli_query($conn, $query);
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card text-start">
             <h4 class="card-title text-center mb-3">User Information</h4>
-            <h5 class="firstName"><i class="fas fa-user"></i> First Name: <?php echo $user['firstName']; ?></h5>
-            <h5 class="lastName"><i class="fas fa-user-tag"></i> Last Name: <?php echo $user['lastName']; ?></h5>
-            <h5 class="birthDate"><i class="fas fa-calendar-alt"></i> Birth Date: <?php echo $user['birthDate']; ?></h5>
+            <h5 class="firstName">First Name: <?php echo $user['firstName']; ?></h5>
+            <h5 class="lastName">Last Name: <?php echo $user['lastName']; ?></h5>
+            <h5 class="birthDate">Birth Date: <?php echo $user['birthDate']; ?></h5>
           </div>
         </div>
       <?php
@@ -135,7 +126,7 @@ $result = mysqli_query($conn, $query);
   </div>
 
   <div class="container-fluid footer">
-  <p><i class="fas fa-copyright"></i> 2024 Jalem Louise T. Grapani. All rights reserved.</p>
+  <p>&copy; 2024 Jalem Louise T. Grapani. All rights reserved.</p>
 </div>
 
 
