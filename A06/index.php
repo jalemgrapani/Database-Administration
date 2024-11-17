@@ -118,7 +118,7 @@ $result = mysqli_query($conn, $query);
             <h5 class="lastName">Last Name: <?php echo $user['lastName']; ?></h5>
             <h5 class="birthDate">Birth Date: <?php echo $user['birthDate']; ?></h5>
             <form method="post" action="delete.php">
-              <input type="hidden" name="user_id" value="<?php echo $user['userInfoID']; ?>"> <!-- Correct primary key here -->
+              <input type="hidden" name="user_id" value="<?php echo $user['userInfoID']; ?>"> 
               <button type="submit" class="btn btn-danger mt-3">Delete</button>
             </form>
           </div>
