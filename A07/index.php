@@ -60,14 +60,6 @@ $result = executeQuery($query);
       box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4);
     }
 
-    .card h5 {
-      color: #333;
-      font-weight: 500;
-      margin: 10px 0;
-      display: flex;
-      align-items: center;
-    }
-
     .footer {
       text-align: center;
       margin-top: 30px;
@@ -115,13 +107,14 @@ $result = executeQuery($query);
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card text-start">
               <h4 class="card-title text-center mb-3">User Information</h4>
-              <h5 class="firstName">First Name: <?php echo $user['firstName']; ?></h5>
-              <h5 class="lastName">Last Name: <?php echo $user['lastName']; ?></h5>
-              <h5 class="birthDate">Birth Date: <?php echo $user['birthDate']; ?></h5>
+              <h5>First Name: <?php echo $user['firstName']; ?></h5>
+              <h5>Last Name: <?php echo $user['lastName']; ?></h5>
+              <h5>Birth Date: <?php echo $user['birthDate']; ?></h5>
               <form method="post">
                 <input type="hidden" value="<?php echo $user['userInfoID']; ?>" name="userId">
                 <button class="btn btn-danger mt-3" name="btnDeleteUser">Delete</button>
               </form>
+              <a href="edit.php?id=<?php echo $user['userInfoID']; ?>" class="btn btn-warning mt-3">Edit</a>
             </div>
           </div>
       <?php
