@@ -1,4 +1,4 @@
-<?php
+<?phps
   $dbhost = "localhost"; 
 	$dbuser = "root";
 	$dbpass = "";
