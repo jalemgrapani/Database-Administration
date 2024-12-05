@@ -76,7 +76,7 @@ $departureAirportResults = executeQuery($departureAirportQuery);
             <div class="row">
               <div class="col-12 col-md-3 mb-3">
                 <label for="airlineSelect" class="form-label"
-                  style="font-size: 25px; font-weight: bold;">Airline</label>
+                  style="font-size: 1.5rem; font-weight: bold;">Airline</label>
                 <select id="airlineSelect" name="airline" class="form-select">
                   <option value="">Any</option>
                   <?php
@@ -98,7 +98,7 @@ $departureAirportResults = executeQuery($departureAirportQuery);
 
               <div class="col-12 col-md-3 mb-3">
                 <label for="departureAirportSelect" class="form-label"
-                  style="font-size: 25px; font-weight: bold;">Departure Airport</label>
+                  style="font-size: 1.5rem; font-weight: bold;">Departure Airport</label>
                 <select id="departureAirportSelect" name="departureAirport" class="form-select">
                   <option value="">Any</option>
                   <?php
@@ -118,7 +118,7 @@ $departureAirportResults = executeQuery($departureAirportQuery);
               </div>
 
               <div class="col-12 col-md-3 mb-3">
-                <label for="sort" class="form-label" style="font-size: 25px; font-weight: bold;">Sort By</label>
+                <label for="sort" class="form-label" style="font-size: 1.5rem; font-weight: bold;">Sort By</label>
                 <select id="sort" name="sort" class="form-select">
                   <option value="">None</option>
                   <option <?php if ($sort == "flightNumber") {
@@ -144,7 +144,7 @@ $departureAirportResults = executeQuery($departureAirportQuery);
               </div>
 
               <div class="col-12 col-md-3 mb-3">
-                <label for="order" class="form-label" style="font-size: 25px; font-weight: bold;">Order</label>
+                <label for="order" class="form-label" style="font-size: 1.5rem; font-weight: bold;">Order</label>
                 <select id="order" name="order" class="form-select">
                   <option <?php if ($order == "ASC") {
                     echo "selected";
