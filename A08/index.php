@@ -52,6 +52,18 @@ $departureAirportResults = executeQuery($departureAirportQuery);
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
+<style>
+  table td,
+  table th {
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  table th {
+    font-size: 18px;
+  }
+</style>
+
 <body>
   <div class="container">
     <div class="row my-5">
@@ -63,7 +75,8 @@ $departureAirportResults = executeQuery($departureAirportQuery);
             </div>
             <div class="row">
               <div class="col-12 col-md-3 mb-3">
-                <label for="airlineSelect" class="form-label">Airline</label>
+                <label for="airlineSelect" class="form-label"
+                  style="font-size: 25px; font-weight: bold;">Airline</label>
                 <select id="airlineSelect" name="airline" class="form-select">
                   <option value="">Any</option>
                   <?php
@@ -84,7 +97,8 @@ $departureAirportResults = executeQuery($departureAirportQuery);
               </div>
 
               <div class="col-12 col-md-3 mb-3">
-                <label for="departureAirportSelect" class="form-label">Departure Airport</label>
+                <label for="departureAirportSelect" class="form-label"
+                  style="font-size: 25px; font-weight: bold;">Departure Airport</label>
                 <select id="departureAirportSelect" name="departureAirport" class="form-select">
                   <option value="">Any</option>
                   <?php
@@ -104,7 +118,7 @@ $departureAirportResults = executeQuery($departureAirportQuery);
               </div>
 
               <div class="col-12 col-md-3 mb-3">
-                <label for="sort" class="form-label">Sort By</label>
+                <label for="sort" class="form-label" style="font-size: 25px; font-weight: bold;">Sort By</label>
                 <select id="sort" name="sort" class="form-select">
                   <option value="">None</option>
                   <option <?php if ($sort == "flightNumber") {
@@ -130,7 +144,7 @@ $departureAirportResults = executeQuery($departureAirportQuery);
               </div>
 
               <div class="col-12 col-md-3 mb-3">
-                <label for="order" class="form-label">Order</label>
+                <label for="order" class="form-label" style="font-size: 25px; font-weight: bold;">Order</label>
                 <select id="order" name="order" class="form-select">
                   <option <?php if ($order == "ASC") {
                     echo "selected";
@@ -156,57 +170,57 @@ $departureAirportResults = executeQuery($departureAirportQuery);
           <h1 class="text-center mb-4 bg-dark text-white p-3">
             Flight Logs
           </h1>
-
-          <table class="table table-responsive">
-            <thead>
-              <tr>
-                <th scope="col" class="text-center">Flight Number</th>
-                <th scope="col" class="text-center">Departure Airport</th>
-                <th scope="col" class="text-center">Arrival Airport</th>
-                <th scope="col" class="text-center">Departure Date</th>
-                <th scope="col" class="text-center">Arrival Date</th>
-                <th scope="col" class="text-center">Duration (Minutes)</th>
-                <th scope="col" class="text-center">Airline</th>
-                <th scope="col" class="text-center">Aircraft Type</th>
-                <th scope="col" class="text-center">Passengers</th>
-                <th scope="col" class="text-center">Ticket Price</th>
-                <th scope="col" class="text-center">Pilot</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-              if (mysqli_num_rows($flightLogsResults) > 0) {
-                while ($flightsrow = mysqli_fetch_assoc($flightLogsResults)) {
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col" class="text-center">Flight Number</th>
+                  <th scope="col" class="text-center">Departure Airport</th>
+                  <th scope="col" class="text-center">Arrival Airport</th>
+                  <th scope="col" class="text-center">Departure Date</th>
+                  <th scope="col" class="text-center">Arrival Date</th>
+                  <th scope="col" class="text-center">Duration (Minutes)</th>
+                  <th scope="col" class="text-center">Airline</th>
+                  <th scope="col" class="text-center">Aircraft Type</th>
+                  <th scope="col" class="text-center">Passengers</th>
+                  <th scope="col" class="text-center">Ticket Price</th>
+                  <th scope="col" class="text-center">Pilot</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                if (mysqli_num_rows($flightLogsResults) > 0) {
+                  while ($flightsrow = mysqli_fetch_assoc($flightLogsResults)) {
+                    ?>
+                    <tr>
+                      <td class="text-center"><?php echo $flightsrow['flightNumber']; ?></td>
+                      <td class="text-center"><?php echo $flightsrow['departureAirportCode']; ?></td>
+                      <td class="text-center"><?php echo $flightsrow['arrivalAirportCode']; ?></td>
+                      <td class="text-center"><?php echo $flightsrow['departureDateTime']; ?></td>
+                      <td class="text-center"><?php echo date('Y-m-d', strtotime($flightsrow['arrivalDateTime'])); ?></td>
+                      <td class="text-center"><?php echo $flightsrow['flightDurationMinutes']; ?></td>
+                      <td class="text-center"><?php echo $flightsrow['airlineName']; ?></td>
+                      <td class="text-center"><?php echo $flightsrow['aircraftType']; ?></td>
+                      <td class="text-center"><?php echo $flightsrow['passengerCount']; ?></td>
+                      <td class="text-center"><?php echo $flightsrow['ticketPrice']; ?></td>
+                      <td class="text-center"><?php echo $flightsrow['pilotName']; ?></td>
+                    </tr>
+                    <?php
+                  }
+                } else {
                   ?>
                   <tr>
-                    <td class="text-center"><?php echo $flightsrow['flightNumber']; ?></td>
-                    <td class="text-center"><?php echo $flightsrow['departureAirportCode']; ?></td>
-                    <td class="text-center"><?php echo $flightsrow['arrivalAirportCode']; ?></td>
-                    <td class="text-center"><?php echo $flightsrow['departureDateTime']; ?></td>
-                    <td class="text-center"><?php echo date('Y-m-d', strtotime($flightsrow['arrivalDateTime'])); ?></td>
-                    <td class="text-center"><?php echo $flightsrow['flightDurationMinutes']; ?></td>
-                    <td class="text-center"><?php echo $flightsrow['airlineName']; ?></td>
-                    <td class="text-center"><?php echo $flightsrow['aircraftType']; ?></td>
-                    <td class="text-center"><?php echo $flightsrow['passengerCount']; ?></td>
-                    <td class="text-center"><?php echo $flightsrow['ticketPrice']; ?></td>
-                    <td class="text-center"><?php echo $flightsrow['pilotName']; ?></td>
+                    <td colspan="11" class="text-center">No flight logs available</td>
                   </tr>
                   <?php
                 }
-              } else {
                 ?>
-                <tr>
-                  <td colspan="11" class="text-center">No flight logs available</td>
-                </tr>
-                <?php
-              }
-              ?>
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </body>
 
 </html>
