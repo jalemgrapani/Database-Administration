@@ -12,7 +12,8 @@ $result = executeQuery($query);
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>User Information</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     body {
       background-color: #FFFDB5;
@@ -65,46 +66,47 @@ $result = executeQuery($query);
       background-color: #FFC107;
       border-radius: 10px;
       box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-      position: relative;
-      bottom: 0;
-      width: 100%;
     }
   </style>
 </head>
 
-<body>
-  <div class="container-fluid mb-5">
-    <h3 class="title text-center">Social Media User Information</h3>
-  </div>
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <?php
-      if (mysqli_num_rows($result) > 0) {
-        while ($user = mysqli_fetch_assoc($result)) {
-      ?>
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card text-start">
-            <h4 class="card-title text-center mb-3">User Information</h4>
-            <h5 class="firstName">First Name: <?php echo $user['firstName']; ?></h5>
-            <h5 class="lastName">Last Name: <?php echo $user['lastName']; ?></h5>
-            <h5 class="birthDate">Birth Date: <?php echo $user['birthDate']; ?></h5>
-          </div>
-        </div>
-      <?php
-        }
-      } else {
-        echo "<p class='text-center'>No user information found.</p>";
-      }
-      ?>
+<body class="d-flex flex-column min-vh-100">
+  <main class="flex-grow-1">
+    <div class="container-fluid mb-5">
+      <h3 class="title text-center">Social Media User Information</h3>
     </div>
-  </div>
 
-  <div class="footer">
-    <p>&copy; 2024 Jalem Louise Grapani. All rights reserved.</p>
-  </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <?php
+        if (mysqli_num_rows($result) > 0) {
+          while ($user = mysqli_fetch_assoc($result)) {
+            ?>
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card text-start">
+                <h4 class="card-title text-center mb-3">User Information</h4>
+                <h5 class="firstName">First Name: <?php echo $user['firstName']; ?></h5>
+                <h5 class="lastName">Last Name: <?php echo $user['lastName']; ?></h5>
+                <h5 class="birthDate">Birth Date: <?php echo $user['birthDate']; ?></h5>
+              </div>
+            </div>
+            <?php
+          }
+        } else {
+          echo "<p class='text-center'>No user information found.</p>";
+        }
+        ?>
+      </div>
+    </div>
+  </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <footer class="footer">
+    <p class="mb-0">&copy; 2024 Jalem Louise Grapani. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
